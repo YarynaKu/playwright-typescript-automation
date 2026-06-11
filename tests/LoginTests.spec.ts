@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { LoginPage } from '../src/pages/LoginPage.ts';
-import { standardUser, lockedUser } from '../src/test-data/users.ts';
+import { standardUser, lockedUser, nonExistentUser } from '../src/test-data/users.ts';
 
 test.describe('Login Tests', () => {
     
@@ -32,6 +32,21 @@ test.describe('Login Tests', () => {
 
             await test.step('Verify login failure', async () => {
                 await loginPage.expectLoginFailure();
+            });
+        })
+
+        test('Failed login with non-existent user credentials', async ({ page }) => {
+            const loginPage = new LoginPage(page);
+            await test.step('Navigate to login page', async () => {
+                await loginPage.navigate();
+            });
+
+            await test.step('Login with non-existent user credentials', async () => {
+                await loginPage.login(nonExistentUser.username, nonExistentUser.password);
+            });
+
+            await test.step('Verify login failure for non-existent user', async () => {
+                await loginPage.expectLoginFailureForNonExistentUser();
             });
         })
 

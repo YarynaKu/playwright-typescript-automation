@@ -7,3 +7,8 @@ export const lockedUser = {
     username: 'locked_out_user',
     password: 'secret_sauce'
 }
+
+export const nonExistentUser = {
+    username: 'non_existent_user',
+    password: 'secret_sauce'
+}
