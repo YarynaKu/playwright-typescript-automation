@@ -3,7 +3,7 @@ import { ProductsPage } from '../src/pages/ProductsPage.ts';
 import { LoginPage } from '../src/pages/LoginPage.ts';
 import { standardUser } from '../src/test-data/users.ts';
 
-test.describe.only('Products Page Tests', () => {
+test.describe('Products Page Tests', () => {
 
   test.beforeEach(async ({ page }) => {
     const productsPage = new ProductsPage(page);
