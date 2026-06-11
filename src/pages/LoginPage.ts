@@ -18,10 +18,10 @@ export class LoginPage {
   }
 
   async expectLoginSuccess() {
-    await expect(this.page.locator('#welcome-message')).toBeVisible();
+    await expect(this.page.locator('[data-test="title"]')).toHaveText('Products');
   }
 
   async expectLoginFailure() {
-    await expect(this.page.locator('#error-message')).toBeVisible();
+    await expect(this.page.locator('[data-test="error"]')).toBeVisible();
   }
 }
